@@ -11,7 +11,7 @@ Next, click "Terminal" at the top of the program and then "Open New Terminal". C
 To log into the remote server, use the command $ssh cs15lwi23aor@ieng6.ucsd.edu
 "cs15lwi23aor" is should be your course username. Replace "aor" with whatever your actual username is, and "cs15lwi23" probably stands for Computer Science 13 Lab Winter 2023, but hey, your guess is as good as mine's. 
 
-![Image](Lab1sc3.png)
+![Image](Lab1sc3.PNG)
 
 Finally, after entering your password and logging in (your password won't appear on screen as you type for security purposes), you should have access to the server. Here are the commands we were taught so far:
 
@@ -20,4 +20,4 @@ cd: Change directory - Follow with name of the directory to move into it, or .. 
 ls: List - List all the files in the current directory.
 cat: I'm not sure, and I probably should study up on this one more. 
 
-![Image](Lab1sc4.png)
+![Image](Lab1sc4.PNG)
