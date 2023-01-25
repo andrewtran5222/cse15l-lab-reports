@@ -1,6 +1,6 @@
 Welcome to CSE 15L Lab Report 1. It seems like you crashed your old computer and need to set everything up again. Don't worry, I'm here to help.
 
-First, download Visual Studio Code [Link](https://code.visualstudio.com/). After greenlighting all the default settings and selling your soul to Microsoft, you should have see this screen (If you are a demon that is not using dark mode, your color scheme may be a bit different.):
+First, download Visual Studio Code [VS Code](https://code.visualstudio.com/). After greenlighting all the default settings and selling your soul to Microsoft, you should have see this screen (If you are a demon that is not using dark mode, your color scheme may be a bit different.):
 
 ![Image](Lab1sc1.png)
 
