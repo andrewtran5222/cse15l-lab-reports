@@ -21,8 +21,8 @@ To log into the remote server, use the command `$ssh cs15lwi23aor@ieng6.ucsd.edu
 Finally, after entering your password and logging in (your password won't appear on screen as you type for security purposes), you should have access to the server. Here are the commands we were taught so far:
 
 * `pwd`: Print working directory - Print the name of the current directory
-*`cd`: Change directory - Follow with name of the directory to move into it, or .. to move backwards, ~ to return to the home directory. 
-*`ls`: List - List all the files in the current directory.
-*`cat`: I'm not sure, and I probably should study up on this one more. 
+* `cd`: Change directory - Follow with name of the directory to move into it, or .. to move backwards, ~ to return to the home directory. 
+* `ls`: List - List all the files in the current directory.
+* `cat`: I'm not sure, and I probably should study up on this one more. 
 
 ![Image](Lab1sc4.PNG)
