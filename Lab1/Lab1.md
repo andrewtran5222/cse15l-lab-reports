@@ -7,7 +7,7 @@ First, download [Visual Studio Code](https://code.visualstudio.com/). After gree
 ![Image](Lab1sc1.png)
 
 ## Step 2
-Next, click "Terminal" at the top of the program and then "Open New Terminal". Ctrl + Shift + ' might also work for you, but it didn't for me for some reason. 
+Next, click "Terminal" at the top of the program and then "Open New Terminal". `Ctrl + Shift + ' `might also work for you, but it didn't for me for some reason. 
 
 ![Image](Lab1sc2.png)
 
