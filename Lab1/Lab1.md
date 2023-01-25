@@ -8,7 +8,7 @@ Next, click "Terminal" at the top of the program and then "Open New Terminal". C
 
 ![Image](Lab1sc2.png)
 
-To log into the remote server, use the command '$ssh cs15lwi23aor@ieng6.ucsd.edu'
+To log into the remote server, use the command `$ssh cs15lwi23aor@ieng6.ucsd.edu`
 "cs15lwi23aor" is should be your course username. Replace "aor" with whatever your actual username is, and "cs15lwi23" probably stands for Computer Science 13 Lab Winter 2023, but hey, your guess is as good as mine's. 
 
 ![Image](Lab1sc3.PNG)
