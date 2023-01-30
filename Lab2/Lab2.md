@@ -2,7 +2,7 @@
 Welcome to CSE 15L Lab Report 2. This week we're dealing with servers. Yeah, real hackerman stuff. 
 
 ## Part 1
-I set up the StringServer.java file to run on my computer at `localhost:5222`. I input the link 'http://localhost:5222/add-message?s=hello', as seen at the top.
+I set up the StringServer.java file to run on my computer at `localhost:5222`. I input the link `http://localhost:5222/add-message?s=hello`, as seen at the top.
 
 ![Image](Lab2sc1.PNG)
 
