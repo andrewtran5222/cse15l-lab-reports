@@ -33,7 +33,8 @@ Input 1 and 2 are working inputs, but input 3 is a failure-incuding input.
 The method as it is written records the value of the lowest number, but not the index, meaning that if there are multiple values of the lowest number, they will all not be included in the sum that calculates the average, leading to a lower average than expected. (It should only remove 1 number.)
 
 The method before is as follows: 
- ` static double averageWithoutLowest(double[] arr) {
+ ```
+ static double averageWithoutLowest(double[] arr) {
     if(arr.length < 2) { return 0.0; }
     double lowest = arr[0];
     for(double num: arr) {
@@ -44,4 +45,5 @@ The method before is as follows:
       if(num != lowest) { sum += num; }
     }
     return sum / (arr.length - 1);
-  }`
+  }
+ ```
