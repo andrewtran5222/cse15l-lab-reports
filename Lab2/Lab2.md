@@ -47,8 +47,8 @@ The method before is as follows:
     return sum / (arr.length - 1);
   }
  ```
+ After:
  ```
- After: 
    static double averageWithoutLowest(double[] arr) {
     if(arr.length < 2) { return 0.0; }
     int lowestIndex = 0;
