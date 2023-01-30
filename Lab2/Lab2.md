@@ -11,7 +11,7 @@ I did it again, but this time with the input link `http://localhost:5222/add-mes
 ![Image](Lab2sc2.PNG)
 
 **Which methods in your code are called?**
-There are the `handleRequest`, `getPath`, `equals`, `format`, `contains`, and the `main` method. 
+There are the `handleRequest`, `getPath`, `equals`, `format`, `contains`, and the `main` methods. 
 
 **What are the relevant arguments to those methods, and the values of any relevant fields of the class?**
 * `handleRequest`: Takes the `(URI url)` argument, which takes entire URL as an input. There is a string nammed `line` which initializes as an empty string but will later be modified to be the input to the `format` method. 
