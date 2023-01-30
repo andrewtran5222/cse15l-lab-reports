@@ -20,7 +20,28 @@ There are the `handleRequest`, `getPath`, `equals`, `format`, `contains`, and th
 * `contains`: Checks if a string contains a certain substring (the argument).
 
 **How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.**
-The value of `URI` doesn't change, it represents the input from the user, and is then picked apart.
+The value of `url` doesn't change, it represents the input from the user, and is then picked apart.
 The `line` value changes based on the input if the correct path and query is provided. It updates based on the query and adds a line break to the end. 
 
 ## Part 2
+I chose to look at the `averageWithoutLowest` function. 
+Input 1 and 2 are working inputs, but input 3 is a failure-incuding input.
+
+![Image](Lab2sc3.PNG)
+![Image](Lab2sc4.PNG)
+
+The method as it is written records the value of the lowest number, but not the index, meaning that if there are multiple values of the lowest number, they will all not be included in the sum that calculates the average, leading to a lower average than expected. (It should only remove 1 number.)
+
+The method before is as follows: 
+ ` static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    double lowest = arr[0];
+    for(double num: arr) {
+      if(num < lowest) { lowest = num; }
+    }
+    double sum = 0;
+    for(double num: arr) {
+      if(num != lowest) { sum += num; }
+    }
+    return sum / (arr.length - 1);
+  }`
