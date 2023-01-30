@@ -14,7 +14,7 @@ I did it again, but this time with the input link `http://localhost:5222/add-mes
 There are the `handleRequest`, `getPath`, `equals`, `format`, `contains`, and the `main` methods. 
 
 **What are the relevant arguments to those methods, and the values of any relevant fields of the class?**
-* `handleRequest`: Takes the `(URI url)` argument, which takes entire URL as an input. There is a string nammed `line` which initializes as an empty string but will later be modified to be the input to the `format` method. 
+* `handleRequest`: Takes the `(URI url)` argument, which takes entire URL as an input. There is a string named `line` which initializes as an empty string but will later be modified to be the input to the `format` method. 
 * `equals`: Takes in a string as an argument and compares it to the current string.
 * `format`: Formats a string with formatting methods and is returned to the server.
 * `contains`: Checks if a string contains a certain substring (the argument).
