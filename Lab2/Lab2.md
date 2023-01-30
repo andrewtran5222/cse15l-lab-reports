@@ -47,3 +47,22 @@ The method before is as follows:
     return sum / (arr.length - 1);
   }
  ```
+ After: 
+   static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    int lowestIndex = 0;
+    for(int i = 0; i < arr.length; i++) {
+      if(arr[i] < arr[lowestIndex]) { lowestIndex = i; }
+    }
+    double sum = 0;
+    for(int i = 0; i < arr.length; i++) {
+      if(i != lowestIndex) { sum += num; }
+    }
+    return sum / (arr.length - 1);
+  }
+```
+This way the method ensures it doesn't count the index with the lowest value in it, not all indexes with the lowest value. 
+
+# Part 3
+* One thing I learned was that the `assertEqualsDouble` method with the argument `(double expected, double actual)` is actually deprecated, with the argument `(double expected, double actual, double index)` being preferred instead. I'm not entirely sure what the index represents yet, but I used it for now. 
+* Another thing I learned was that inputting a space into a query gets it converted into %20, the ASCII code for space, in some formats, since spaces aren't typically allowed. 
