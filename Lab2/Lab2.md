@@ -3,7 +3,46 @@ Welcome to CSE 15L Lab Report 2. This week we're dealing with servers. Yeah, rea
 
 ## Part 1
 I set up the `StringServer.java` file to run on my computer at `localhost:5222`. I input the link `http://localhost:5222/add-message?s=hello`, as seen at the top.
+`StringServer.java`:
+ ```
+import java.io.IOException;
+import java.net.URI;
 
+class Handler implements URLHandler {
+    // The one bit of state on the server: a number that will be manipulated by
+    // various requests.
+    String line = "";
+
+    public String handleRequest(URI url) {
+        if (url.getPath().equals("/")) {
+            return String.format(line);
+        } else {
+            System.out.println("Path: " + url.getPath());
+            if (url.getPath().contains("/add-message")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    line = line + (parameters[1]) + "\n";
+                    return String.format(line);
+                }
+            }
+            return "404 Not Found!";
+        }
+    }
+}
+
+class StringServer {
+    public static void main(String[] args) throws IOException {
+        if(args.length == 0){
+            System.out.println("Missing port number! Try any number between 1024 to 49151");
+            return;
+        }
+
+        int port = Integer.parseInt(args[0]);
+
+        Server.start(port, new Handler());
+    }
+}
+ ```
 ![Image](Lab2sc1.PNG)
 
 I did it again, but this time with the input link `http://localhost:5222/add-message?s=hello%20again`.
@@ -26,7 +65,19 @@ The `line` value changes based on the input if the correct path and query is pro
 ## Part 2
 I chose to look at the `averageWithoutLowest` function. 
 Input 1 and 2 are working inputs, but input 3 is a failure-incuding input.
+```
+  @Test
+  public void testAverageWithoutLowest() {
+    double[] input1 = { };
+    assertEquals(0, ArrayExamples.averageWithoutLowest(input1), 0);
 
+    double[] input2 = { 1, 2, 3, 4, 5 };
+    assertEquals(3.5, ArrayExamples.averageWithoutLowest(input2), 0);
+
+    double[] input3 = { 1, 1, 2, 3, 4, 5 };
+    assertEquals(3, ArrayExamples.averageWithoutLowest(input3), 0);
+  }
+```
 ![Image](Lab2sc3.PNG)
 ![Image](Lab2sc4.PNG)
 
