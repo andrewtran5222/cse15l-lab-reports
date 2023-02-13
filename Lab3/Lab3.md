@@ -82,19 +82,26 @@ General help using GNU software: <http://www.gnu.org/gethelp/>
  ```
 There are a lot of command options here, but I'd like to hone in on a just few of them. 
 
-## `-r` command
-I first learned about the `-r` command when preparing for the skill demonstration and very quickly learned about how useful it could be. I was initially struggling to find out how to use `grep` to search all the directories within a directory, but it would only search the non-directory files within the directory, echoing out `[DIRECTORY NAME]: Is a directory` without actually searching them. `-r` (standing for "recursion") solved this by recursively traversing all directories and searching inside each of them as well. 
+## `-r` command option
+I first learned about the `-r` option when preparing for the skill demonstration and very quickly learned about how useful it could be. I was initially struggling to find out how to use `grep` to search all the directories within a directory, but it would only search the non-directory files within the directory, echoing out `[DIRECTORY NAME]: Is a directory` without actually searching them. `-r` (standing for `--recursive`) solved this by recursively traversing all directories and searching inside each of them as well. 
 
-https://linuxhint.com/use-grep-recursively/
+Source: [Link](https://linuxhint.com/use-grep-recursively/)
 
-## `-l` command
-This is another command I used during the skill demonstration, as
+# Example 1
+![Image](Lab2sc1.PNG)
 
-## `-n` command
-The method before is as follows: 
+## `-l` command option
+This is another option I used during the skill demonstration, as I noticed that even after finding the file in a directory it would print the the line that the pattern (string) was on along with the file name, resulting in an extremely long and cluttered output result. It would also print a file more than once if the pattern appears more than once, which would be redundant when used for file searching. The `-l` (standing for `--files-with-matches`) option solved this by printing only the file with the matching pattern, once. 
 
-## `-v` command
-This is another command I used during the skill demonstration, as
+## `-n` command option
+The `-n` option (standing for `line-number`) is one I didn't use during the skill demonstration, but after researching it I was able to think of a couple of ways it could be useful. Simply put, it prints out the line number of the matching patterns along with the line itself. This can be useful, especially in debugging, if you were to look for all instances of a certain command in a file (if statements, for/while loops, conditions) or perhaps to search for all instances of a variable (in order to replace it). By knowing the line number, it is easier to go into the file to search and edit it yourself.  
+
+Source: [Link](https://www.softwaretestinghelp.com/grep-command-in-unix/)
+
+## `-v` command option
+The `-v` option (standing for `--invert-matches`) is another interesting command option I found while researching. It basically prints out the opposite output of what a normal `-grep` command would, meaning that instead of printing all lines or files with matches, it prints out all lines or files WITHOUT matches instead. Not only will you receive this inverted data, but you could also use it to essentially REMOVE all lines with a certain pattern. 
+
+Source: [Link](https://askubuntu.com/questions/1153513/what-does-grep-v-grep-mean-and-do)
  
 # Part 3
 * One thing I learned was that the `assertEqualsDouble` method with the argument `(double expected, double actual)` is actually deprecated, with the argument `(double expected, double actual, double index)` being preferred instead. I'm not entirely sure what the index represents yet, but I used it for now. 
