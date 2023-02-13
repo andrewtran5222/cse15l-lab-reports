@@ -1,120 +1,101 @@
-# Lab Report 2
-Welcome to CSE 15L Lab Report 2. This week we're dealing with servers. Yeah, real hackerman stuff. 
+# Lab Report 3
+Welcome to CSE 15L Lab Report 3. This week we're studying bash commands. Or should I say, the many commands of the one command I've picked: `grep`
 
-## Part 1
-I set up the `StringServer.java` file to run on my computer at `localhost:5222`. I input the link `http://localhost:5222/add-message?s=hello`, as seen at the top.
-`StringServer.java`:
+## Definition
+In our previous labs, we used `grep ".txt"` to find all the files in a directory that ended with the `.txt` extension. However, here's how `grep` defines itself and all its options, unapologetically copied and pasted from the command `grep --help`:
  ```
-import java.io.IOException;
-import java.net.URI;
+Usage: grep [OPTION]... PATTERN [FILE]...
+Search for PATTERN in each FILE or standard input.
+PATTERN is, by default, a basic regular expression (BRE).
+Example: grep -i 'hello world' menu.h main.c
 
-class Handler implements URLHandler {
-    // The one bit of state on the server: a number that will be manipulated by
-    // various requests.
-    String line = "";
+Regexp selection and interpretation:
+  -E, --extended-regexp     PATTERN is an extended regular expression (ERE)
+  -F, --fixed-strings       PATTERN is a set of newline-separated strings
+  -G, --basic-regexp        PATTERN is a basic regular expression (BRE)
+  -P, --perl-regexp         PATTERN is a Perl regular expression
+  -e, --regexp=PATTERN      use PATTERN for matching
+  -f, --file=FILE           obtain PATTERN from FILE
+  -i, --ignore-case         ignore case distinctions
+  -w, --word-regexp         force PATTERN to match only whole words
+  -x, --line-regexp         force PATTERN to match only whole lines
+  -z, --null-data           a data line ends in 0 byte, not newline
 
-    public String handleRequest(URI url) {
-        if (url.getPath().equals("/")) {
-            return String.format(line);
-        } else {
-            System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/add-message")) {
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    line = line + (parameters[1]) + "\n";
-                    return String.format(line);
-                }
-            }
-            return "404 Not Found!";
-        }
-    }
-}
+Miscellaneous:
+  -s, --no-messages         suppress error messages
+  -v, --invert-match        select non-matching lines
+  -V, --version             display version information and exit
+      --help                display this help text and exit
 
-class StringServer {
-    public static void main(String[] args) throws IOException {
-        if(args.length == 0){
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
-            return;
-        }
+Output control:
+  -m, --max-count=NUM       stop after NUM matches
+  -b, --byte-offset         print the byte offset with output lines
+  -n, --line-number         print line number with output lines
+      --line-buffered       flush output on every line
+  -H, --with-filename       print the file name for each match
+  -h, --no-filename         suppress the file name prefix on output
+      --label=LABEL         use LABEL as the standard input file name prefix
+  -o, --only-matching       show only the part of a line matching PATTERN
+  -q, --quiet, --silent     suppress all normal output
+      --binary-files=TYPE   assume that binary files are TYPE;
+                            TYPE is 'binary', 'text', or 'without-match'
+  -a, --text                equivalent to --binary-files=text
+  -I                        equivalent to --binary-files=without-match
+  -d, --directories=ACTION  how to handle directories;
+                            ACTION is 'read', 'recurse', or 'skip'
+  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;
+                            ACTION is 'read' or 'skip'
+  -r, --recursive           like --directories=recurse
+  -R, --dereference-recursive  likewise, but follow all symlinks
+      --include=FILE_PATTERN  search only files that match FILE_PATTERN
+      --exclude=FILE_PATTERN  skip files and directories matching FILE_PATTERN
+      --exclude-from=FILE   skip files matching any file pattern from FILE
+      --exclude-dir=PATTERN  directories that match PATTERN will be skipped.
+  -L, --files-without-match  print only names of FILEs containing no match
+  -l, --files-with-matches  print only names of FILEs containing matches
+  -c, --count               print only a count of matching lines per FILE
+  -T, --initial-tab         make tabs line up (if needed)
+  -Z, --null                print 0 byte after FILE name
 
-        int port = Integer.parseInt(args[0]);
+Context control:
+  -B, --before-context=NUM  print NUM lines of leading context
+  -A, --after-context=NUM   print NUM lines of trailing context
+  -C, --context=NUM         print NUM lines of output context
+  -NUM                      same as --context=NUM
+      --color[=WHEN],
+      --colour[=WHEN]       use markers to highlight the matching strings;
+                            WHEN is 'always', 'never', or 'auto'
+  -U, --binary              do not strip CR characters at EOL (MSDOS/Windows)
+  -u, --unix-byte-offsets   report offsets as if CRs were not there
+                            (MSDOS/Windows)
 
-        Server.start(port, new Handler());
-    }
-}
+'egrep' means 'grep -E'.  'fgrep' means 'grep -F'.
+Direct invocation as either 'egrep' or 'fgrep' is deprecated.
+When FILE is -, read standard input.  With no FILE, read . if a command-line
+-r is given, - otherwise.  If fewer than two FILEs are given, assume -h.
+Exit status is 0 if any line is selected, 1 otherwise;
+if any error occurs and -q is not given, the exit status is 2.
+
+Report bugs to: bug-grep@gnu.org
+GNU grep home page: <https://www.gnu.org/software/grep/>
+General help using GNU software: <http://www.gnu.org/gethelp/>
  ```
-![Image](Lab2sc1.PNG)
+There are a lot of command options here, but I'd like to hone in on a just few of them. 
 
-I did it again, but this time with the input link `http://localhost:5222/add-message?s=hello%20again`.
+## `-r` command
+I first learned about the `-r` command when preparing for the skill demonstration and very quickly learned about how useful it could be. I was initially struggling to find out how to use `grep` to search all the directories within a directory, but it would only search the non-directory files within the directory, echoing out `[DIRECTORY NAME]: Is a directory` without actually searching them. `-r` (standing for "recursion") solved this by recursively traversing all directories and searching inside each of them as well. 
 
-![Image](Lab2sc2.PNG)
+https://linuxhint.com/use-grep-recursively/
 
-**Which methods in your code are called?**
-There are the `handleRequest`, `getPath`, `equals`, `format`, `contains`, and the `main` methods. 
+## `-l` command
+This is another command I used during the skill demonstration, as
 
-**What are the relevant arguments to those methods, and the values of any relevant fields of the class?**
-* `handleRequest`: Takes the `(URI url)` argument, which takes entire URL as an input. There is a string named `line` which initializes as an empty string but will later be modified to be the input to the `format` method. 
-* `equals`: Takes in a string as an argument and compares it to the current string.
-* `format`: Formats a string with formatting methods and is returned to the server.
-* `contains`: Checks if a string contains a certain substring (the argument).
-
-**How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.**
-The value of `url` doesn't change, it represents the input from the user, and is then picked apart.
-The `line` value changes based on the input if the correct path and query is provided. It updates based on the query and adds a line break to the end. 
-
-## Part 2
-I chose to look at the `averageWithoutLowest` function. 
-Input 1 and 2 are working inputs, but input 3 is a failure-incuding input.
-```
-  @Test
-  public void testAverageWithoutLowest() {
-    double[] input1 = { };
-    assertEquals(0, ArrayExamples.averageWithoutLowest(input1), 0);
-
-    double[] input2 = { 1, 2, 3, 4, 5 };
-    assertEquals(3.5, ArrayExamples.averageWithoutLowest(input2), 0);
-
-    double[] input3 = { 1, 1, 2, 3, 4, 5 };
-    assertEquals(3, ArrayExamples.averageWithoutLowest(input3), 0);
-  }
-```
-![Image](Lab2sc3.PNG)
-![Image](Lab2sc4.PNG)
-
-The method as it is written records the value of the lowest number, but not the index, meaning that if there are multiple values of the lowest number, they will all not be included in the sum that calculates the average, leading to a lower average than expected. (It should only remove 1 number.)
-
+## `-n` command
 The method before is as follows: 
- ```
- static double averageWithoutLowest(double[] arr) {
-    if(arr.length < 2) { return 0.0; }
-    double lowest = arr[0];
-    for(double num: arr) {
-      if(num < lowest) { lowest = num; }
-    }
-    double sum = 0;
-    for(double num: arr) {
-      if(num != lowest) { sum += num; }
-    }
-    return sum / (arr.length - 1);
-  }
- ```
- After:
- ```
-   static double averageWithoutLowest(double[] arr) {
-    if(arr.length < 2) { return 0.0; }
-    int lowestIndex = 0;
-    for(int i = 0; i < arr.length; i++) {
-      if(arr[i] < arr[lowestIndex]) { lowestIndex = i; }
-    }
-    double sum = 0;
-    for(int i = 0; i < arr.length; i++) {
-      if(i != lowestIndex) { sum += num; }
-    }
-    return sum / (arr.length - 1);
-  }
-```
-This way the method ensures it doesn't count the index with the lowest value in it, not all indexes with the lowest value. 
 
+## `-v` command
+This is another command I used during the skill demonstration, as
+ 
 # Part 3
 * One thing I learned was that the `assertEqualsDouble` method with the argument `(double expected, double actual)` is actually deprecated, with the argument `(double expected, double actual, double index)` being preferred instead. I'm not entirely sure what the index represents yet, but I used it for now. 
 * Another thing I learned was that inputting a space into a query gets it converted into %20, the ASCII code for space, in some formats, since spaces aren't typically allowed. 
