@@ -87,8 +87,12 @@ I first learned about the `-r` option when preparing for the skill demonstration
 
 Source: [Link](https://linuxhint.com/use-grep-recursively/)
 
-# Example 1
-![Image](Lab2sc1.PNG)
+### Example 1
+```
+$ grep -r "Forte da Ponte da Bandeira" written_2
+written_2/travel_guides/berlitz2/Algarve-WhereToGo.txt:Your first view of Lagos will probably be from the long, riverside Avenida dos Descobrimentos, which divides the old walled city from the port. At the other end of the avenue, the well-restored fortress, Forte da Ponte da Bandeira, once guarded the entrance to the harbor in the 17th century. Cross the river to see busy fishermen, handsome boats anchored in the marina, and the fine view of the city above the walls. Many of the streets rising towards the top of town are narrow, cobbled, and more accustomed to donkeys than rental cars. Though Lagos town still retains a good part of its original walls — most of them from the 16th century, but part-Roman in places — they have been rebuilt and expanded over the centuries. Climb the ramparts for fine views over the port and out to sea.
+written_2/travel_guides/berlitz2/Portugal-WhereToGo.txt:The well-restored fortress, Forte da Ponte da Bandeira, once guarded the entrance to the harbor in the 17th century. Many of the streets rising towards the top of town are narrow, cobbled, and more accustomed to donkeys than rental cars. Though Lagos town still retains a good part of its original walls — most of them from the 16th century, but part-Roman in places — they have been rebuilt and expanded over the centuries.
+```
 
 ## `-l` command option
 This is another option I used during the skill demonstration, as I noticed that even after finding the file in a directory it would print the the line that the pattern (string) was on along with the file name, resulting in an extremely long and cluttered output result. It would also print a file more than once if the pattern appears more than once, which would be redundant when used for file searching. The `-l` (standing for `--files-with-matches`) option solved this by printing only the file with the matching pattern, once. 
