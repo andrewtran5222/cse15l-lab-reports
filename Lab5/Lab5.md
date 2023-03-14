@@ -116,13 +116,13 @@ In previous labs, `less <<file name>>` was a command we used to quickly explore 
                 --wheel-lines=N
                   Each click of the mouse wheel moves N lines.
  ```
-There are a lot of command options here, but I'd like to hone in on a just few of them. 
+There are a lot of command options here, but I'd like to go more into just a few of them. 
 
 ## `-N` command option
 The `-N` option (standing for `line-numbers`) prints out the line number of the file being printed. It's interesting that the built-in summary describes it as "Don't use line numbers", when this is the command that you need to make them show. This can be useful in debugging, because you scroll through the file, when you see a line with an error or mistake in it, you have the line number to refer to when debugging or when referring it to another collaborator. 
 
 
-### Example 1
+### Example
 ```
 $ less -N history.txt
       1
