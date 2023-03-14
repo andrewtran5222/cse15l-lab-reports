@@ -181,7 +181,7 @@ Besides the command-line accessible options available to the `less` command, the
 * `e`: Moves forward one line, or N number of lines. Useful for debugging when you already know which line number the code that needs to be edited is on, then jump to it precisely. 
 * `y`: Moves backward one line, or N number of lines. Similar to `e`, but backwards. 
 
-###
+### Searching
 * `/pattern`: Searches forward to (N-th) matching line. The pattern represents any input that you are searching for. Anyone who's ever used `Ctrl-F` in other documents knows the usefulness of being able to search through a document for a specific pattern. You comb through data faster than a human eye ever could. 
 * `?pattern`: Searches backward to (N-th) matching line. Similar to `/pattern`, but backwards. 
 * `&pattern`: Displays only lines that match the pattern. Useful for debugging, for example you can find all the `if` statements or `for` loops and view them all at once. 
