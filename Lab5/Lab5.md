@@ -2,7 +2,7 @@
 Welcome to CSE 15L Lab Report 5. This week we're looking more into the bash command I passed on in Lab Report 3: `less`
 
 ## Definition
-In previous labs, `less <<file name><` was a command we used to quickly explore files from the command line. That by itself is useful, but there are many options of the command that can make them even more useful. The command has a long summary of its usage when inputted with `--help`, and here is the raw description from its "OPTIONS" section. 
+In previous labs, `less <<file name>>` was a command we used to quickly explore files from the command line. That by itself is useful, but there are many options of the command that can make them even more useful. The command has a long summary of its usage when inputted with `--help`, and here is the raw description from its "OPTIONS" section. 
  ```
                           OPTIONS
 
@@ -174,7 +174,6 @@ Besides the command-line accessible options available to the `less` command, the
 * `g`: Goes to the first line in the file. Useful for when you're trying to get to data at or near the start of the file. 
 * `G`: Goes to the last line in the file.U seful for when you're trying to get to data at or near the end of the file. 
 * `{`, `(`, `[`, `}`, `(`, `]`: Jumps to the nearest open or closed bracket. This is very useful for debugging because a lot of languages use these brackets as the start or end of a condition or command, and this would help navigate to them quickly. 
-* Fourth item 
 
 ### Moving
 * `z`: Moves forward one window. Works faster than repeatedly spamming the down arrow. 
